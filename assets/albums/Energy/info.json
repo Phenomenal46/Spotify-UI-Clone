@@ -1,0 +1,21 @@
+{
+    "folder": "Energy",
+    "meta": {
+        "title": "Energy",
+        "artist": "Royalty Free",
+        "cover": "assets/albums/Energy/cover.jpg",
+        "description": "Upbeat grooves to keep you moving."
+    },
+    "songs": [
+        {
+            "title": "Funky Menu Loop",
+            "src": "assets/albums/Energy/song/funkymenuloop.mp3",
+            "duration": "0:55"
+        },
+        {
+            "title": "Jungled",
+            "src": "assets/albums/Energy/song/jungled.mp3",
+            "duration": "0:55"
+        }
+    ]
+}

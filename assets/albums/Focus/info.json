@@ -1,0 +1,21 @@
+{
+    "folder": "Focus",
+    "meta": {
+        "title": "Focus",
+        "artist": "Royalty Free",
+        "cover": "assets/albums/Focus/cover.jpg",
+        "description": "Short loops that help with concentration."
+    },
+    "songs": [
+        {
+            "title": "1 Minute Loop",
+            "src": "assets/albums/Focus/song/1minute.mp3",
+            "duration": "1:00"
+        },
+        {
+            "title": "8-Bit Title Screen",
+            "src": "assets/albums/Focus/song/8BitTitleScreen.mp3",
+            "duration": "0:40"
+        }
+    ]
+}

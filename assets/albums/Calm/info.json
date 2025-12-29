@@ -1,0 +1,21 @@
+{
+    "folder": "Calm",
+    "meta": {
+        "title": "Calm",
+        "artist": "Royalty Free",
+        "cover": "assets/albums/Calm/cover.jpg",
+        "description": "Calm the Mind."
+    },
+    "songs": [
+        {
+            "title": "JRPG-Piano",
+            "src": "assets/albums/Calm/song/JRPG-Piano.mp3",
+            "duration": "0:24"
+        },
+        {
+            "title": "piano_nostalgia",
+            "src": "assets/albums/Calm/song/piano_nostalgia.mp3",
+            "duration": "0:49"
+        }
+    ]
+}

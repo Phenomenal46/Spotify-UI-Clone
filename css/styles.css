@@ -1,0 +1,805 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #000000;
+    --nav-bg: rgba(0, 0, 0, 0.85);
+    --muted: rgba(255, 255, 255, 0.75);
+    --card: #202020;
+    --search-bg: #202020;
+    --primary-green: #1ed760;
+    --text-gray: #b3b3b3;
+    --text-white: #ffffff;
+    /* used for range thumb fallback */
+}
+
+/* Base typography */
+html,
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    font-size: 15px;
+
+}
+
+/* Page basics */
+body {
+    background-color: var(--bg);
+    color: white;
+    height: 100vh;
+    /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Prevents scrollbars on the body itself */
+}
+
+/* NAVBAR: layout + spacing */
+nav.nav-root {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 4px 18px 4px 18px;
+    margin: 0px 8px;
+    position: relative;
+    /* for mobile overlays */
+}
+
+/* Left and right containers inside nav */
+.nav-left {
+    gap: 12px;
+    align-items: center
+}
+
+.nav-right {
+    gap: 5px;
+    align-items: center
+}
+
+/* Logo */
+.logo-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain
+}
+
+/* Icon buttons (circular icons) */
+.home-btn {
+    background: var(--search-bg);
+    width: 44px;
+    border: none;
+    cursor: pointer;
+    padding: 11px;
+    border-radius: 35px;
+    margin-right: 8px;
+}
+
+.home-btn img {
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.home-btn:hover {
+    background: rgb(44, 44, 44);
+    transition: background-color 160ms ease;
+}
+
+/* container for tooltip */
+.home-btn,
+.browse-btn {
+    position: relative;
+}
+
+/* tooltip bubble */
+.home-btn::after,
+.browse-btn::after {
+    content: attr(aria-label);
+    position: absolute;
+    left: 50%;
+    top: 110%;
+    /* translateX(-50%) shifts the tooltip left by 50% of the tooltip’s own width.
+        Combined with left: 50%, this centers the tooltip horizontally over the parent:
+            left:50% moves the tooltip’s left edge to the parent center,
+            translateX(-50%) moves the tooltip left by half its own width → perfect centering. */
+    transform: translateX(-50%) translateY(6px);
+    white-space: nowrap;
+    /*   for single-line tooltips. */
+    padding: 6px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+    background: #2e2e2e;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    /* transition says: when opacity or transform change, animate that change over .15s using an ease timing function. */
+    transition: opacity .15s ease, transform .15s ease;
+}
+
+/* show on hover or keyboard focus */
+/*When the user hovers, the pseudo-element’s rules change to opacity:1 and translateY(0). The browser animates from the old values (opacity:0, translateY(6px)) to the new ones.*/
+.home-btn:hover::after,
+.home-btn:focus::after,
+.browse-btn:hover::after,
+.browse-btn:focus::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+/* Search pill */
+.input-area {
+    align-items: center;
+    gap: 10px;
+    background: var(--search-bg);
+    padding: 8px 10px;
+    border-radius: 999px;
+    height: 44px;
+    min-width: 280px;
+    max-width: 440px;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+
+.search-input {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--muted);
+    font-size: 15px;
+    width: 420px;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 400
+}
+
+
+.nav-link:hover {
+    color: white;
+    transform: translateY(-1px)
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.03)
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25)
+}
+
+
+
+.browse-btn {
+    border-style: none;
+    background: transparent;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+/* thin divider used in search */
+.divider {
+    width: 1px;
+    height: 22px;
+    background: rgb(125, 124, 124);
+    margin: 0px 2px 0px 8px;
+}
+
+.divider.vertical {
+    width: 1.5px;
+    height: 24px;
+    background: rgb(234, 231, 231);
+    margin: 0 8px
+}
+
+/* Install link */
+.install-link {
+    margin-left: 8px;
+    gap: 8px;
+    color: var(--muted);
+    text-decoration: none
+}
+
+.install-link:hover {
+    color: white;
+}
+
+.install-icon {
+    width: 13px;
+    height: 13px;
+    padding-top: 3px;
+}
+
+.install-text {
+    font: 0.875rem;
+}
+
+/* navbar links */
+.nav-link {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 2px;
+}
+
+/* Auth buttons */
+.btn {
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer
+}
+
+.btn-outline {
+    background: transparent;
+    border: none;
+    color: var(--muted)
+}
+
+.btn-outline:hover {
+    color: rgb(252, 250, 250)
+}
+
+.btn-primary {
+    background: rgba(255, 254, 254, 0.947);
+    width: auto;
+    height: auto;
+    color: black;
+    border-radius: 35px;
+    white-space: nowrap;
+}
+
+.btn-primary:hover {
+    background-color: rgb(231, 233, 233);
+}
+
+/* Main content placement */
+main {
+    margin-top: 3px;
+    display: flex;
+    gap: 8px;
+    height: 78vh;
+}
+
+
+/* New sidebar (app-sidebar) styles matching Spotify layout */
+.app-sidebar {
+    margin: 0px 0px 6px 6px;
+    width: 20vw;
+    background: var(--card);
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 77.90vh;
+    box-sizing: border-box;
+}
+
+/* top area contains header (fixed) and a scrollable card area */
+.sb-top {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sb-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 4px
+}
+
+.sb-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: white
+}
+
+.sb-add {
+    background: transparent;
+    border: 0;
+    color: #a9a9a9;
+    width: 36px;
+    height: 36px;
+    border-radius: 88px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer
+}
+
+.sb-add:hover {
+    background: rgba(255, 255, 255, 0.03);
+    color: white;
+}
+
+/* cards area scrolls independently inside sidebar */
+.sb-cards {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    gap: 19px;
+    overflow-y: auto;
+}
+
+/* 2. Set the width of the scrollbar */
+.sb-cards::-webkit-scrollbar {
+    width: 10px;
+    /* Thin width */
+}
+
+/* 3. The background "track" (keep it invisible) */
+.sb-cards::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 4. The moving "thumb" (The actual grey bar) */
+.sb-cards::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    /* Hidden by default! */
+
+}
+
+/* 5.  Only show grey color when hovering over the container */
+.sb-cards:hover::-webkit-scrollbar-thumb {
+    background-color: #555;
+    /* Dark grey color appears on hover */
+}
+
+.sb-card {
+    background: #2b2a2a;
+    padding: 14px;
+    border-radius: 10px;
+}
+
+.sb-card--primary {
+    background: #2b2a2a;
+}
+
+.card-title {
+    font-size: 14px;
+    font-weight: 650;
+    margin-bottom: 6px
+}
+
+.card-desc {
+    color: rgb(211, 208, 208);
+    font-size: 12px;
+    margin-bottom: 19px;
+}
+
+
+
+/* Footer area sticks to bottom of sidebar */
+.sb-footer {
+    margin-top: 10px;
+    padding-top: 4px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 12px
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 10px;
+    text-decoration: none
+}
+
+.footer-links a:hover {
+    color: white
+}
+
+.lang-wrap {
+    margin-top: 55px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 43px;
+    display: flex;
+    align-items: center
+}
+
+.lang-btn {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 24px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--muted)
+}
+
+.lang-btn img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.9
+}
+
+
+.main-container {
+    width: calc(100% - 17vw - 40px);
+    height: 72vh;
+    margin: 0px 6px 6px 0px;
+    background-color: var(--card);
+    border-radius: 6px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 27px 12px 12px;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+/* button (simple, polished) */
+.nav-arrow-btn {
+    display: inline-grid;
+    place-items: center;
+    /* center the < and > */
+    width: 32px;
+    height: 32px;
+    /* comfortable click area */
+    background: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #1e1e1e;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform .10s ease, box-shadow .10s ease, opacity .10s ease;
+    user-select: none;
+}
+
+/* hover + active */
+.nav-arrow-btn:hover:not([disabled]) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.65);
+}
+
+.nav-arrow-btn:active:not([disabled]) {
+    transform: translateY(0);
+}
+
+
+/* disabled look */
+.nav-arrow-btn[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+
+/* --- Cards grid (albums) --- */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 18px;
+    padding: 12px 6px;
+}
+
+.card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.play-btn-overlay {
+    position: relative;
+    left: -36px;
+    margin-top: -36px;
+}
+
+/* Playlist / song list */
+.playlist-header {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.song-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: var(--text-gray);
+}
+
+.song-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+    color: white;
+    cursor: pointer;
+}
+
+.song-row.active-song {
+    background: rgba(30, 215, 96, 0.12);
+    color: white;
+}
+
+.view-desc {
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+
+/* --- 5. PLAYER BAR --- */
+.player-bar {
+    height: 90px;
+    background-color: #000;
+    border-top: 1px solid #282828;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.song-info img {
+    height: 56px;
+    width: 56px;
+    border-radius: 4px;
+    margin-right: 14px;
+    object-fit: cover;
+}
+
+.song-desc h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.song-desc p {
+    font-size: 11px;
+    color: var(--text-gray);
+}
+
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    cursor: pointer;
+}
+
+.control-btn:hover {
+    color: white;
+}
+
+.play-pause-btn {
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1);
+    transition: 0.2s;
+}
+
+.play-pause-btn:hover {
+    transform: scale(1.05);
+}
+
+.progress-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--text-gray);
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 4px;
+    background: #4d4d4d;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: var(--text-white);
+    visibility: hidden;
+}
+
+.progress-container:hover input[type="range"]::-webkit-slider-thumb {
+    visibility: visible;
+}
+
+.volume-controls {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#volume-bar {
+    width: 100px;
+    height: 4px;
+    background: #b3b3b3;
+    border-radius: 2px;
+    margin-left: 10px;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+/* -----------------------------
+   Responsive (Mobile-first)
+   Simple, beginner-friendly breakpoints
+   - <= 600px: small phones
+   - <= 900px: tablets / small desktops
+   - > 900px: desktop (default)
+   ----------------------------- */
+
+/* Make the layout stack on narrow screens and hide the sidebar for clarity */
+@media (max-width: 900px) {
+    main {
+        /* Stack sidebar below main content or hide it for small screens */
+        flex-direction: column;
+        height: auto;
+    }
+
+    .app-sidebar {
+        display: none; /* hide to give full width to main content */
+        height: auto;
+    }
+
+    .main-container {
+        width: calc(100% - 12px);
+        margin: 8px 6px;
+        height: auto;
+        padding: 14px;
+    }
+
+    .main-header {
+        margin: 0 6px 12px 6px;
+        gap: 8px;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .nav-arrows {
+        transform: translateY(0);
+    }
+
+    .input-area {
+        min-width: 140px;
+        max-width: 220px;
+    }
+
+    .install-text { display: none; }
+}
+
+/* Small phones: single column cards and compact player */
+@media (max-width: 600px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .card img {
+        height: 160px;
+    }
+
+    .playlist-header img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Player stacks vertically for small screens */
+    .player-bar {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .song-info, .player-controls, .volume-controls {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .song-info {
+        gap: 10px;
+    }
+
+    .progress-container {
+        width: 100%;
+    }
+
+    #volume-bar { width: 70%; margin-left: 8px; }
+
+    /* Reduce text size slightly on tiny screens */
+    html, body { font-size: 14px; }
+}
+
+/* Medium screens: make cards a bit more dense */
+@media (min-width: 901px) and (max-width: 1200px) {
+    .cards-container { grid-template-columns: repeat(3, 1fr); }
+    .app-sidebar { width: 18vw; }
+    .main-container { width: calc(100% - 18vw - 40px); }
+}
+
+/* Large screens: slightly wider album images */
+@media (min-width: 1201px) {
+    .cards-container { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+    .card img { height: 140px; }
+}

@@ -1,0 +1,16 @@
+{
+    "folder": "Coding-vibe",
+    "meta": {
+        "title": "Coding Vibe",
+        "artist": "Royalty Free",
+        "cover": "assets/albums/Coding-vibe/cover.jpg",
+        "description": "Minimal loops to help you code and stay in flow."
+    },
+    "songs": [
+        {
+            "title": "Level Music Loop",
+            "src": "assets/albums/Coding-vibe/song/levelmusicloop-tigrun.mp3",
+            "duration": "0:50"
+        }
+    ]
+}

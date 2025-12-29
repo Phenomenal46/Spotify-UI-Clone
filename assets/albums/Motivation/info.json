@@ -1,0 +1,21 @@
+{
+    "folder": "Motivation",
+    "meta": {
+        "title": "Motivation",
+        "artist": "Royalty Free",
+        "cover": "assets/albums/Motivation/cover.jpg",
+        "description": "Motivating loops to power your day."
+    },
+    "songs": [
+        {
+            "title": "Dark Things Loop",
+            "src": "assets/albums/Motivation/song/dark_things_loop.mp3",
+            "duration": "0:50"
+        },
+        {
+            "title": "Unexplored (Short)",
+            "src": "assets/albums/Motivation/song/Unexplored-shortver.mp3",
+            "duration": "0:55"
+        }
+    ]
+}

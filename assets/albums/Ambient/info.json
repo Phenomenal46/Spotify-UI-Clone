@@ -1,0 +1,21 @@
+{
+    "folder": "Ambient",
+    "meta": {
+        "title": "Ambient",
+        "artist": "Royalty Free",
+        "cover": "assets/albums/Ambient/cover.jpg",
+        "description": "Soft ambient loops to help you relax and focus."
+    },
+    "songs": [
+        {
+            "title": "Heavenly Loop",
+            "src": "assets/albums/Ambient/song/Heavenly Loop.mp3",
+            "duration": "0:45"
+        },
+        {
+            "title": "Project Utopia",
+            "src": "assets/albums/Ambient/song/Project Utopia.mp3",
+            "duration": "0:45"
+        }
+    ]
+}
