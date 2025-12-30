@@ -515,6 +515,7 @@ main {
     flex-direction: column;
     gap: 10px;
     align-items: flex-start;
+    position:relative;
 }
 
 .card img {
@@ -524,10 +525,30 @@ main {
     border-radius: 6px;
 }
 
+.card:hover{
+    background-color: #2e2e2e;
+}
+
 .play-btn-overlay {
-    position: relative;
-    left: -36px;
-    margin-top: -36px;
+    position: absolute;
+    right: 20px;
+    bottom: 80px;
+    width: 48px;
+    height: 48px;
+    background-color: #1ed760;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .play-btn-overlay {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Playlist / song list */
@@ -696,6 +717,7 @@ input[type="range"]::-webkit-slider-thumb {
     height: 16px;
     fill: currentColor;
 }
+
 /* -----------------------------
    Responsive (Mobile-first)
    Simple, beginner-friendly breakpoints
@@ -713,7 +735,8 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     .app-sidebar {
-        display: none; /* hide to give full width to main content */
+        display: none;
+        /* hide to give full width to main content */
         height: auto;
     }
 
@@ -743,7 +766,9 @@ input[type="range"]::-webkit-slider-thumb {
         max-width: 220px;
     }
 
-    .install-text { display: none; }
+    .install-text {
+        display: none;
+    }
 }
 
 /* Small phones: single column cards and compact player */
@@ -770,7 +795,9 @@ input[type="range"]::-webkit-slider-thumb {
         gap: 8px;
     }
 
-    .song-info, .player-controls, .volume-controls {
+    .song-info,
+    .player-controls,
+    .volume-controls {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -785,21 +812,40 @@ input[type="range"]::-webkit-slider-thumb {
         width: 100%;
     }
 
-    #volume-bar { width: 70%; margin-left: 8px; }
+    #volume-bar {
+        width: 70%;
+        margin-left: 8px;
+    }
 
     /* Reduce text size slightly on tiny screens */
-    html, body { font-size: 14px; }
+    html,
+    body {
+        font-size: 14px;
+    }
 }
 
 /* Medium screens: make cards a bit more dense */
 @media (min-width: 901px) and (max-width: 1200px) {
-    .cards-container { grid-template-columns: repeat(3, 1fr); }
-    .app-sidebar { width: 18vw; }
-    .main-container { width: calc(100% - 18vw - 40px); }
+    .cards-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .app-sidebar {
+        width: 18vw;
+    }
+
+    .main-container {
+        width: calc(100% - 18vw - 40px);
+    }
 }
 
 /* Large screens: slightly wider album images */
 @media (min-width: 1201px) {
-    .cards-container { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
-    .card img { height: 140px; }
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .card img {
+        height: 140px;
+    }
 }

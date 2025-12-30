@@ -208,7 +208,7 @@ async function loadAlbums() {
         btnBack.disabled = false;
         mainContainer.innerHTML = '<p style="color:#f66">Failed to load albums. See console for details.</p>';
     }
-} 
+}
 
 // 2. RENDER PLAYLIST (Detailed View)
 function renderPlaylistView(albumData) {
@@ -226,7 +226,7 @@ function renderPlaylistView(albumData) {
     headerDiv.innerHTML = `
                 <img src="${encodeURI(albumData.meta.cover)}" alt="${albumData.meta.title}">
                 <div class="playlist-info">
-                    <p style="font-size: 14px; font-weight: bold; margin-bottom: 8px;">PLAYLIST</p>
+                    
                     <h1>${albumData.meta.title}</h1>
                     <p style="color: #b3b3b3; font-size: 14px;">${albumData.meta.description}</p>
                     <p style="margin-top: 10px; font-size: 14px;"><b>${albumData.meta.artist}</b> • ${albumData.songs.length} songs</p>
