@@ -443,6 +443,29 @@ main {
     overflow-y: auto;
 }
 
+/* 2. Set the width of the scrollbar */
+.main-container::-webkit-scrollbar {
+    width: 10px;
+    /* Thin width */
+}
+
+/* 3. The background "track" (keep it invisible) */
+.main-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 4. The moving "thumb" (The actual grey bar) */
+.main-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+/* 5.  Only show grey color when hovering over the container */
+.main-container:hover::-webkit-scrollbar-thumb {
+    background-color: #555;
+    /* Dark grey color appears on hover */
+}
+
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -515,7 +538,7 @@ main {
     flex-direction: column;
     gap: 10px;
     align-items: flex-start;
-    position:relative;
+    position: relative;
 }
 
 .card img {
@@ -525,7 +548,7 @@ main {
     border-radius: 6px;
 }
 
-.card:hover{
+.card:hover {
     background-color: #2e2e2e;
 }
 
