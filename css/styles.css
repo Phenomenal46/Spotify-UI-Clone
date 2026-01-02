@@ -574,29 +574,96 @@ main {
     transform: translateY(0);
 }
 
-/* Playlist / song list */
+/* Playlist / song list: compact header and non-scrolling playlist-mode */
 .playlist-header {
     display: flex;
-    gap: 18px;
+    gap: 16px;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+}
+
+.playlist-cover {
+    width: 84px;
+    height: 84px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.playlist-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.playlist-info .badge {
+    font-size: 12px;
+    color: var(--text-gray);
+    letter-spacing: 0.06em;
+}
+
+.playlist-title {
+    font-size: 20px;
+    margin: 0;
+}
+
+.playlist-meta, .playlist-sub {
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+/* Keep the description compact and prevent it from wrapping to multiple lines */
+.playlist-meta {
+    max-width: 60ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* When we're showing a playlist, make the main container a column and remove scrollbars */
+.main-container.playlist-mode {
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden; /* remove scrollbar as requested */
 }
 
 .song-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    margin-top: 8px;
+    /* Allow the list to expand to fill the remaining space, but don't create an inner scrollbar */
+    flex: 1 1 auto;
+    overflow: visible;
 }
 
+/* Compact, grid-based song rows to reduce vertical space */
 .song-row {
-    display: flex;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 36px 1fr 58px;
     align-items: center;
-    padding: 8px 10px;
+    gap: 8px;
+    padding: 6px 8px;
     border-radius: 6px;
     color: var(--text-gray);
+    font-size: 13px;
 }
 
+.song-num {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 13px;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.song-title { font-weight: 600; }
+.song-artist { font-size: 12px; color: var(--text-gray); }
+
+.song-duration { text-align: right; color: var(--text-gray); font-size: 12px; }
 .song-row:hover {
     background: rgba(255, 255, 255, 0.02);
     color: white;

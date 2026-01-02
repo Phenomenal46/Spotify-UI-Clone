@@ -166,20 +166,14 @@ if (volumeBar) volumeBar.value = String(audioPlayer.volume);
 async function loadAlbums() {
     try {
         // UI Reset (use safe updates in case elements were not found)
-        if (viewTitle) viewTitle.innerText = "Focus";
-        if (viewDesc && viewDesc.style) {
-            viewDesc.style.display = 'block';
-            viewDesc.innerText = "Music to help you concentrate.";
-        }
+        if (viewTitle) viewTitle.innerText = "Recommended Albums for you";
         btnBack.disabled = true;
         btnBack.style.cursor = "not-allowed";
         btnBack.style.opacity = "0.5";
-        mainContainer.innerHTML = '<p style="color:white">Loading...</p>'; // Loading state
+        mainContainer.innerHTML = '<p style="color:#fff; font-family: Roboto;">Loading...</p>'; // Loading state
 
-        // Fetch Data (from assets manifest/info.json files)
+        // Fetch Data (from assets /info.json files)
         const albums = await fetchAlbumsFromAssets();
-
-        if (!Array.isArray(albums)) throw new Error('Albums data is not an array');
 
         // Render Grid
         mainContainer.innerHTML = ''; // Clear loading text
@@ -190,9 +184,9 @@ async function loadAlbums() {
             card.classList.add('card');
 
             // Pass the whole album object to the click handler (use navigation wrapper so history is tracked)
-            card.onclick = () => navigateToPlaylist(albumData);
+            card.addEventListener('click', ()=>navigateToPlaylist(albumData));
 
-            // Use data from the "meta" part of our JSON structure (encode URI in case filenames have spaces)
+            // Use data from the "meta" part of the JSON structure (encode URI in case filenames have spaces)
             card.innerHTML = `
                         <img src="${encodeURI(albumData.meta.cover)}" alt="${albumData.meta.title}">
                         <div class="play-btn-overlay">
@@ -219,17 +213,19 @@ function renderPlaylistView(albumData) {
     viewDesc.style.display = 'none';
     mainContainer.innerHTML = '';
     mainContainer.className = '';
+    // Put the container into playlist-mode so it won't show its scrollbar
+    mainContainer.classList.add('playlist-mode');
 
-    // Header Section
+    // Header Section (compact layout): small cover on the left, details on the right
     const headerDiv = document.createElement('div');
     headerDiv.className = 'playlist-header';
     headerDiv.innerHTML = `
-                <img src="${encodeURI(albumData.meta.cover)}" alt="${albumData.meta.title}">
+                <img class="playlist-cover" src="${encodeURI(albumData.meta.cover)}" alt="${albumData.meta.title}">
                 <div class="playlist-info">
-                    
-                    <h1>${albumData.meta.title}</h1>
-                    <p style="color: #b3b3b3; font-size: 14px;">${albumData.meta.description}</p>
-                    <p style="margin-top: 10px; font-size: 14px;"><b>${albumData.meta.artist}</b> • ${albumData.songs.length} songs</p>
+                    <div class="badge">PLAYLIST</div>
+                    <h1 class="playlist-title">${albumData.meta.title}</h1>
+                    <div class="playlist-meta">${albumData.meta.description}</div>
+                    <div class="playlist-sub"><b>${albumData.meta.artist}</b> • ${albumData.songs.length} songs</div>
                 </div>
             `;
     mainContainer.appendChild(headerDiv);
