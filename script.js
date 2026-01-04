@@ -15,8 +15,8 @@ const database = [
             "description": "Soft ambient loops to help you relax and focus."
         },
         "songs": [
-            { "title": "Heavenly Loop", "src": "assets/albums/Ambient/song/Heavenly Loop.mp3", "duration": "0:45" },
-            { "title": "Project Utopia", "src": "assets/albums/Ambient/song/Project Utopia.mp3", "duration": "0:45" }
+            { "title": "Heavenly Loop", "src": "assets/albums/Ambient/song/Heavenly Loop.mp3", "duration": "0:33" },
+            { "title": "Project Utopia", "src": "assets/albums/Ambient/song/Project Utopia.mp3", "duration": "0:18" }
         ]
     },
     {
@@ -41,7 +41,7 @@ const database = [
             "description": "Minimal loops to help you code and stay in flow."
         },
         "songs": [
-            { "title": "Level Music Loop", "src": "assets/albums/Coding-vibe/song/levelmusicloop-tigrun.mp3", "duration": "0:50" }
+            { "title": "Level Music Loop", "src": "assets/albums/Coding-vibe/song/levelmusicloop-tigrun.mp3", "duration": "0:41" }
         ]
     },
     {
@@ -53,8 +53,8 @@ const database = [
             "description": "Upbeat grooves to keep you moving."
         },
         "songs": [
-            { "title": "Funky Menu Loop", "src": "assets/albums/Energy/song/funkymenuloop.mp3", "duration": "0:55" },
-            { "title": "Jungled", "src": "assets/albums/Energy/song/jungled.mp3", "duration": "0:55" }
+            { "title": "Funky Menu Loop", "src": "assets/albums/Energy/song/funkymenuloop.mp3", "duration": "0:18" },
+            { "title": "Jungled", "src": "assets/albums/Energy/song/jungled.mp3", "duration": "0:37" }
         ]
     },
     {
@@ -67,7 +67,7 @@ const database = [
         },
         "songs": [
             { "title": "1 Minute Loop", "src": "assets/albums/Focus/song/1minute.mp3", "duration": "1:00" },
-            { "title": "8-Bit Title Screen", "src": "assets/albums/Focus/song/8BitTitleScreen.mp3", "duration": "0:40" }
+            { "title": "8-Bit Title Screen", "src": "assets/albums/Focus/song/8BitTitleScreen.mp3", "duration": "0:21" }
         ]
     },
     {
@@ -79,8 +79,8 @@ const database = [
             "description": "Motivating loops to power your day."
         },
         "songs": [
-            { "title": "Dark Things Loop", "src": "assets/albums/Motivation/song/dark_things_loop.mp3", "duration": "0:50" },
-            { "title": "Unexplored (Short)", "src": "assets/albums/Motivation/song/Unexplored-shortver.mp3", "duration": "0:55" }
+            { "title": "Dark Things Loop", "src": "assets/albums/Motivation/song/dark_things_loop.mp3", "duration": "0:32" },
+            { "title": "Unexplored (Short)", "src": "assets/albums/Motivation/song/Unexplored-shortver.mp3", "duration": "0:38" }
         ]
     }
 ];
@@ -161,7 +161,7 @@ if (volumeBar) volumeBar.value = String(audioPlayer.volume);
 
 /* --- LOGIC --- */
 
-// 1. LOAD ALBUMS (Async Function)
+// 1. LOAD ALBUMS 
 // Uses async/await to wait for our "database" to respond
 async function loadAlbums() {
     try {
@@ -184,7 +184,7 @@ async function loadAlbums() {
             card.classList.add('card');
 
             // Pass the whole album object to the click handler (use navigation wrapper so history is tracked)
-            card.addEventListener('click', ()=>navigateToPlaylist(albumData));
+            card.addEventListener('click', () => navigateToPlaylist(albumData));
 
             // Use data from the "meta" part of the JSON structure (encode URI in case filenames have spaces)
             card.innerHTML = `
@@ -387,12 +387,14 @@ function updateMuteUI() {
     if (!muteBtn) return;
     if (audioPlayer.muted || audioPlayer.volume === 0) {
         muteBtn.classList.add('muted');
-        // swap icon to muted visual
-        muteBtn.innerHTML = '<svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9"/><line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+        // swap icon to muted visual (cleaned SVG)
+        muteBtn.innerHTML = '<svg viewBox="0 0 16 16" class="icon" aria-hidden="true"><path d="M13.86 5.47a.75.75 0 0 0-1.061 0l-1.47 1.47-1.47-1.47A.75.75 0 0 0 8.8 6.53L10.269 8l-1.47 1.47a.75.75 0 1 0 1.06 1.06l1.47-1.47 1.47 1.47a.75.75 0 0 0 1.06-1.06L12.39 8l1.47-1.47a.75.75 0 0 0 0-1.06"></path><path d="M10.116 1.5A.75.75 0 0 0 8.991.85l-6.925 4a3.64 3.64 0 0 0-1.33 4.967 3.64 3.64 0 0 0 1.33 1.332l6.925 4a.75.75 0 0 0 1.125-.649v-1.906a4.7 4.7 0 0 1-1.5-.694v1.3L2.817 9.852a2.14 2.14 0 0 1-.781-2.92c.187-.324.456-.594.78-.782l5.8-3.35v1.3c.45-.313.956-.55 1.5-.694z"></path></svg>';
     } else {
         muteBtn.classList.remove('muted');
-        muteBtn.innerHTML = '<svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9"/></svg>';
+        // swap icon to unmuted visual (cleaned SVG)
+        muteBtn.innerHTML = '<svg viewBox="0 0 16 16" class="icon" aria-hidden="true"><path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.64 3.64 0 0 1-1.33-4.967 3.64 3.64 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.14 2.14 0 0 0 0 3.7l5.8 3.35V2.8zm8.683 6.087a4.502 4.502 0 0 0 0-8.474v1.65a3 3 0 0 1 0 5.175z"></path></svg>';
     }
+
 }
 
 if (muteBtn) {

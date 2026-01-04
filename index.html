@@ -113,14 +113,11 @@
 
         <div class="main-container">
             <div class="main-header">
+                <h2 id="view-title"></h2>
                 <div class="nav-arrows">
                     <button id="btn-back" class="nav-arrow-btn" aria-label="Go back" disabled>&lt;</button>
                     <button id="btn-forward" class="nav-arrow-btn" aria-label="Go forward" disabled>&gt;</button>
                 </div>
-
-                <!-- These elements are read/updated by script.js -->
-                <h2 id="view-title"></h2>
-
             </div>
             <!-- JavaScript will inject cards here -->
             <div id="main-view-container">
@@ -177,12 +174,14 @@
 
         <!-- RIGHT: Volume -->
         <div class="volume-controls">
-            <button id="mute-btn" class="mute-btn" aria-label="Toggle mute" >
-                <svg id="volume-icon" viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                    <path d="M3 9v6h4l5 5V4L7 9" />
+            <div id="mute-btn" class="mute-btn" aria-label="Toggle mute">
+                <svg id="volume-icon" viewBox="0 0 16 16" class="icon" aria-hidden="true">
+                    <path
+                        d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.64 3.64 0 0 1-1.33-4.967 3.64 3.64 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.14 2.14 0 0 0 0 3.7l5.8 3.35V2.8zm8.683 6.087a4.502 4.502 0 0 0 0-8.474v1.65a3 3 0 0 1 0 5.175z">
+                    </path>
                 </svg>
-            </button>
-            <input id="volume-bar" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
+            </div>
+            <input id="volume-bar" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume">
         </div>
     </footer>
     <script src="script.js"></script>
