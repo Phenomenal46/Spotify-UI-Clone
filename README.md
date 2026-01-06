@@ -37,25 +37,15 @@ Designed to demonstrate production-ready front-end fundamentals: responsive UI, 
 
 ## 🛠️ Tech Stack
 
-<div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
-  <div>
-    <strong>Frontend</strong><br>
-    • HTML5 (semantic markup)<br>
-    • CSS3 (Grid, Flexbox)<br>
-    • JavaScript ES6+ (async/await, Promises)
-  </div>
-  <div>
-    <strong>APIs & Features</strong><br>
-    • Web Audio API<br>
-    • Fetch API + error handling<br>
-    • DOM manipulation & events
-  </div>
-  <div>
-    <strong>Deployment</strong><br>
-    • GitHub Pages (static hosting)<br>
-    • No build step required<br>
-  </div>
-</div>
+| Technology | Details |
+|-----------|---------|
+| HTML5 | Semantic, accessible markup for screen readers |
+| CSS3 | Grid, Flexbox, custom properties, responsive design |
+| JavaScript ES6+ | `async/await`, Promises, event handling, DOM manipulation |
+| Web Audio API | Native `<audio>` element for playback control |
+| Fetch API | Asynchronous data loading with error handling |
+| Vanilla JS | No external libraries; plain objects for state management |
+| GitHub Pages | Static deployment; zero build configuration |
 
 ---
 
