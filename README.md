@@ -1,7 +1,6 @@
 # 🎵 Spotify UI Clone — Vanilla JS Web Player
 
 ![Vanilla JS](https://img.shields.io/badge/Tech-HTML%2FCSS%2FJS-blue?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Complete-success?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 A clean, **pixel-aware recreation** of Spotify's web player built using **only HTML, CSS, and vanilla JavaScript**.  
