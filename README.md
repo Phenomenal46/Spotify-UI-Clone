@@ -112,11 +112,8 @@ Designed to demonstrate production-ready front-end fundamentals: responsive UI, 
 
 ---
 
-## 📄 License
-
-### MIT License
-
-This project is licensed under the MIT License — feel free to reuse and build on this codebase.
+## 📜 License
+MIT License - see [LICENSE](LICENSE) for details.
 
 ### Music & Assets
 
