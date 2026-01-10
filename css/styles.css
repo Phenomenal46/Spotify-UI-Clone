@@ -138,7 +138,7 @@ nav.nav-root {
     border-radius: 999px;
     height: 44px;
     min-width: 280px;
-    max-width: 440px;
+    max-width: 320px;
     box-sizing: border-box;
 }
 
@@ -238,7 +238,9 @@ nav.nav-root {
     padding: 8px 14px;
     border-radius: 20px;
     font-weight: 600;
-    cursor: pointer
+    cursor: pointer;
+    width: 100%;
+
 }
 
 .btn-outline {
@@ -332,6 +334,7 @@ main {
     height: 250px;
     gap: 19px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* 2. Set the width of the scrollbar */
@@ -380,8 +383,6 @@ main {
     margin-bottom: 19px;
 }
 
-
-
 /* Footer area sticks to bottom of sidebar */
 .sb-footer {
     margin-top: 10px;
@@ -392,7 +393,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
-    margin-bottom: 12px
+    margin-bottom: 2px;
 }
 
 .footer-links a {
@@ -406,7 +407,7 @@ main {
 }
 
 .lang-wrap {
-    margin-top: 55px;
+    margin-top: 15px;
     width: 100px;
     height: 30px;
     border: 1px solid white;
@@ -815,8 +816,10 @@ input[type="range"]::-webkit-slider-thumb {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #b3b3b3; /* subtle grey for idle state */
-    transition: color 140ms ease; /* smooth color change on hover/focus */
+    color: #b3b3b3;
+    /* subtle grey for idle state */
+    transition: color 140ms ease;
+    /* smooth color change on hover/focus */
 }
 
 /* Hover and keyboard focus make the icon white for better contrast */
@@ -842,19 +845,18 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /* -----------------------------
-   Responsive (Mobile-first)
-   Simple, beginner-friendly breakpoints
+   Responsive breakpoints
    - <= 600px: small phones
    - <= 900px: tablets / small desktops
    - > 900px: desktop (default)
    ----------------------------- */
 
-/* Make the layout stack on narrow screens and hide the sidebar for clarity */
+/* Make the layout stack on narrow screens and hide the sidebar behind hamburger for clarity */
 @media (max-width: 900px) {
     main {
         /* Stack sidebar below main content or hide it for small screens */
         flex-direction: column;
-        height: auto;
+        height: 75vh;
     }
 
     .app-sidebar {
@@ -864,8 +866,8 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     .main-container {
-        width: calc(100% - 12px);
-        margin: 8px 6px;
+        width: calc(100% - 40px);
+        margin: 4px 6px;
         height: auto;
         padding: 14px;
     }
@@ -885,13 +887,23 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     .input-area {
-        min-width: 140px;
-        max-width: 220px;
+        min-width: 100px;
+        max-width: 160px;
+    }
+
+    .search-input {
+        display: none;
     }
 
     .install-text {
         display: none;
     }
+
+    .btn-primary {
+        text-wrap: wrap;
+        padding: 7px 8px;
+    }
+
 }
 
 /* Small phones: single column cards and compact player */
@@ -955,6 +967,11 @@ input[type="range"]::-webkit-slider-thumb {
 
     .app-sidebar {
         width: 18vw;
+        overflow-y: auto;
+    }
+
+    .btn-primary {
+        text-wrap: wrap;
     }
 
     .main-container {

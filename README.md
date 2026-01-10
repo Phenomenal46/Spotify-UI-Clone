@@ -26,7 +26,7 @@ Designed to demonstrate production-ready front-end fundamentals: responsive UI, 
 
 ## ⚡ Key Features
 
-- **🎨 Responsive Album Grid** — dynamically rendered playlist/album cards from JSON metadata; mobile-first layout using CSS Grid & Flexbox
+- **🎨 Responsive Album Grid** — dynamically rendered playlist/album cards from JSON metadata; Responsive layout using media queries
 - **🎵 Full-featured Audio Player** — play/pause, seek, previous/next, volume, mute, and keyboard-accessible controls
 - **↩️ Navigation History** — back/forward buttons with custom state stack (not native History API)
 - **🔄 Graceful Fallbacks** — `fetch()` metadata with fallback to in-memory mock database on network failure
