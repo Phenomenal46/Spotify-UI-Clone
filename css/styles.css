@@ -44,6 +44,7 @@ nav.nav-root {
     padding: 4px 18px 4px 18px;
     margin: 0px 8px;
     position: relative;
+    box-sizing: border-box;
     /* for mobile overlays */
 }
 
@@ -859,6 +860,14 @@ input[type="range"]::-webkit-slider-thumb {
         height: 75vh;
     }
 
+    .logo-link {
+        display: none;
+    }
+
+    .nav-left {
+        margin-left: 45px;
+    }
+
     .app-sidebar {
         display: none;
         /* hide to give full width to main content */
@@ -908,6 +917,19 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Small phones: single column cards and compact player */
 @media (max-width: 600px) {
+    main {
+        height: 65vh;
+    }
+
+    .nav-link,
+    .vertical {
+        display: none;
+    }
+
+    .install-text {
+        display: inline-block;
+    }
+
     .cards-container {
         grid-template-columns: 1fr;
     }
@@ -957,6 +979,21 @@ input[type="range"]::-webkit-slider-thumb {
     body {
         font-size: 14px;
     }
+}
+
+@media (max-width: 415px) {
+
+    .install-link,
+    .home-btn {
+        display: none;
+    }
+
+    /* Reduce text size slightly on tiny screens */
+    html,
+    body {
+        font-size: 12px;
+    }
+
 }
 
 /* Medium screens: make cards a bit more dense */
