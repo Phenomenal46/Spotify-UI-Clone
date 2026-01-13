@@ -55,7 +55,7 @@ nav.nav-root {
 }
 
 .nav-right {
-    gap: 5px;
+    gap: 3px;
     align-items: center
 }
 
@@ -611,16 +611,16 @@ main {
     margin: 0;
 }
 
-.playlist-meta,
 .playlist-sub {
-    font-size: 13px;
-    color: var(--text-gray);
+    font-size: 12px;
+    color: #a9a9a9;
 }
 
 /* Keep the description compact and prevent it from wrapping to multiple lines */
 .playlist-meta {
+    font-size: 13px;
+    color: var(--text-gray);
     max-width: 60ch;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -859,7 +859,6 @@ input[type="range"]::-webkit-slider-thumb {
         flex-direction: column;
         height: 75vh;
     }
-
     .logo-link {
         display: none;
     }
@@ -877,7 +876,7 @@ input[type="range"]::-webkit-slider-thumb {
     .main-container {
         width: calc(100% - 40px);
         margin: 4px 6px;
-        height: auto;
+        height: 72vh;
         padding: 14px;
     }
 
