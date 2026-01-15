@@ -128,7 +128,7 @@ let isPlaying = false;
 
 // DOM ELEMENTS
 const audioPlayer = new Audio();
-const mainContainer = document.getElementById('main-view-container');
+const mainContainer = document.getElementById('main-cards-container');
 // These are expected in the DOM; provide sensible fallbacks so the script doesn't break during early errors/tests
 const viewTitle = document.getElementById('view-title') || { innerText: '' };
 const viewDesc = document.getElementById('view-desc') || { style: {}, innerText: '' };
@@ -466,3 +466,36 @@ function formatTime(seconds) {
 // Initialize App
 loadAlbums();
 
+// ====== Hamburger toggle (small-screen sidebar) ======
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const appSidebar = document.querySelector('.app-sidebar');
+
+if (hamburgerBtn && appSidebar) {
+    hamburgerBtn.addEventListener('click', (e) => {
+        const isOpen = appSidebar.classList.toggle('sidebar-open');
+        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+        // lock body scroll while overlay is open
+        if (isOpen) document.body.classList.add('sidebar-open-locked');
+        else document.body.classList.remove('sidebar-open-locked');
+    });
+
+    // Close overlay when clicking outside (only for small screens)
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900 && appSidebar.classList.contains('sidebar-open')) {
+            if (!appSidebar.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                appSidebar.classList.remove('sidebar-open');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('sidebar-open-locked');
+            }
+        }
+    }, true);
+
+    // On resize to desktop, ensure overlay class is removed to restore normal layout
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900 && appSidebar.classList.contains('sidebar-open')) {
+            appSidebar.classList.remove('sidebar-open');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('sidebar-open-locked');
+        }
+    });
+}

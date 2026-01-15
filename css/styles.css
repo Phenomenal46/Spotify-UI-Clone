@@ -41,8 +41,8 @@ nav.nav-root {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 4px 18px 4px 18px;
-    margin: 0px 8px;
+    padding: 4px 22px 4px 5px;
+    margin: 0px 8px 0px 4px;
     position: relative;
     box-sizing: border-box;
     /* for mobile overlays */
@@ -57,6 +57,41 @@ nav.nav-root {
 .nav-right {
     gap: 3px;
     align-items: center
+}
+
+/* ===== Hamburger placed exactly where logo is; stacked vertical bars ===== */
+/* base - hidden on desktop */
+.hamburger-btn {
+    display: none;
+    /* will be shown at <=900px */
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* keep exact logo-area sizing — match typical nav icon size */
+    width: 40px;
+    /* adjust if your logo image is a different fixed size */
+    height: 40px;
+    /* center the three bars */
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* the three bars — fixed sizes so no CSS elsewhere can stretch them */
+.hamburger-line {
+    display: block;
+    width: 20px;
+    /* horizontal length of each bar */
+    height: 2px;
+    /* thickness of each bar */
+    flex: 0 0 2px;
+    /* prevent stretching */
+    border-radius: 2px;
+    background: #fff;
+    /* visible on dark nav; change if needed */
+    transform: none !important;
 }
 
 /* Logo */
@@ -854,17 +889,45 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Make the layout stack on narrow screens and hide the sidebar behind hamburger for clarity */
 @media (max-width: 900px) {
-    main {
-        /* Stack sidebar below main content or hide it for small screens */
+    .hamburger-btn {
+        /* visible on small screens */
+        display: inline-flex;
         flex-direction: column;
-        height: 75vh;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
     }
+
+    /* hide the logo image on small screens so hamburger occupies same space */
     .logo-link {
         display: none;
     }
 
-    .nav-left {
-        margin-left: 45px;
+    /* overlay behavior when sidebar is opened */
+    .app-sidebar.sidebar-open {
+        display: flex !important;
+        position: fixed;
+        left: 8px;
+        top: 64px;
+        z-index: 1200;
+        min-width: 220px;
+        max-width: 360px;
+        height: calc(100vh - 80px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        border-radius: 8px;
+        overflow-y: auto;
+        background: var(--card);
+    }
+
+    body.sidebar-open-locked {
+        overflow: hidden;
+    }
+
+    main {
+        /* Stack sidebar below main content or hide it for small screens */
+        flex-direction: column;
+        height: 75vh;
     }
 
     .app-sidebar {
@@ -920,13 +983,19 @@ input[type="range"]::-webkit-slider-thumb {
         height: 65vh;
     }
 
-    .nav-link,
+    .nav-link-container {
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+    }
+
     .vertical {
         display: none;
     }
 
-    .install-text {
-        display: inline-block;
+    .nav-link {
+        padding-top: 2px;
+        padding-bottom: 2px;
     }
 
     .cards-container {
@@ -981,6 +1050,9 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 @media (max-width: 415px) {
+    .nav-left {
+        gap: 3px;
+    }
 
     .install-link,
     .home-btn {

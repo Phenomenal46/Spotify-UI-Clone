@@ -20,6 +20,13 @@
             <a href="" class="logo-link flex" aria-label="Homepage">
                 <img src="assets/Icons/logo.svg" alt="logo" class="logo-img">
             </a>
+            <!-- hamburger button (small screen) - occupies same space as logo -->
+            <button id="hamburger-btn" class="hamburger-btn" aria-label="Open menu" aria-expanded="false"
+                aria-controls="app-sidebar" type="button">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
 
             <div class="left-r flex">
                 <button class="home-btn flex" aria-label="Home">
@@ -39,9 +46,12 @@
         </div>
 
         <div class="right flex nav-right">
-            <a class="nav-link" href="#">Premium</a>
-            <a class="nav-link" href="#">Support</a>
-            <a class="nav-link" href="#">Download</a>
+            <div class="nav-link-container"> 
+                <a class="nav-link" href="#">Premium</a>
+                <a class="nav-link" href="#">Support</a>
+                <a class="nav-link" href="#">Download</a>
+            </div>
+
             <div class="divider vertical"></div>
 
             <a href="#" class="install-link flex">
@@ -120,7 +130,7 @@
                 </div>
             </div>
             <!-- JavaScript will inject cards here -->
-            <div id="main-view-container">
+            <div id="main-cards-container">
 
             </div>
         </div>
