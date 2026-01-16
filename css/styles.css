@@ -271,6 +271,8 @@ nav.nav-root {
 
 /* Auth buttons */
 .btn {
+    border:none;
+    outline:none;
     padding: 8px 14px;
     border-radius: 20px;
     font-weight: 600;
@@ -795,6 +797,8 @@ main {
 }
 
 .play-pause-btn {
+    border:none;
+    outline:none;
     background-color: white;
     color: black;
     border-radius: 50%;

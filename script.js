@@ -1,5 +1,4 @@
-
-// --- 1. THE MANIFEST (SIMULATED DATABASE) ---
+// --- 1. (SIMULATED DATABASE) ---
 
 // In a real professional app, each of these objects would be a separate "info.json" file
 // living in a folder like: /albums/electronic-vibe/info.json.
