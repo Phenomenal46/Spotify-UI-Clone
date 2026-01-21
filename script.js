@@ -238,10 +238,9 @@ function renderPlaylistView(albumData) {
         row.className = 'song-row';
 
         // Play logic
-        row.onclick = () => {
+        row.addEventListener('click', () => {
             playSongFromAlbum(albumData, index);
-        };
-
+        });
         row.innerHTML = `
                     <span class="song-num">${index + 1}</span>
                     <div class="song-details">
@@ -299,10 +298,17 @@ function highlightActiveSong() {
 
 function playSong() {
     if (!audioPlayer.src) return;
-    audioPlayer.play();
-    isPlaying = true;
-    playIcon.style.display = 'none';
-    pauseIcon.style.display = 'block';
+    audioPlayer.play()
+        .then(() => {
+            /*update UI*/
+            isPlaying = true;
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        })
+        .catch(err => {
+            /*show UI that play failed*/
+            console.log(err);
+        })
 }
 
 function pauseSong() {
@@ -421,15 +427,6 @@ audioPlayer.addEventListener('timeupdate', () => {
     const current = audioPlayer.currentTime;
     const duration = audioPlayer.duration;
     if (isNaN(duration)) return;
-
-    // --- SHORT SONG LOGIC (Requested Feature) ---
-    // Automatically skip to next song if we pass 75 seconds (1:15)
-    // This is useful for demos to keep things moving quickly
-    if (current > 75) {
-        nextSong();
-        return;
-    }
-
     seekBar.value = (current / duration) * 100;
     currentTimeSpan.innerText = formatTime(current);
     totalDurationSpan.innerText = formatTime(duration);
