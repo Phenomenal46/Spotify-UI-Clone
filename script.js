@@ -272,7 +272,7 @@ function playSongFromAlbum(albumData, index) {
 function loadSong(index) {
     if (currentQueue.length === 0) return;
     const song = currentQueue[index];
-    audioPlayer.src = song.src;
+    audioPlayer.src = encodeURI(song.src);
     audioPlayer.load();
 
     // Reset UI while metadata loads (prevents NaN/incorrect seek behavior)
@@ -280,9 +280,9 @@ function loadSong(index) {
     seekBar.value = 0;
     currentTimeSpan.innerText = '0:00';
     totalDurationSpan.innerText = '0:00';
-
-    songTitleEl.innerText = song.title;
-    songArtistEl.innerText = song.artist;
+    // When injecting titles/descriptions prefer textContent
+    songTitleEl.textContent = song.title;
+    songArtistEl.textContent = song.artist;
     albumArtEl.src = song.cover;
 
     highlightActiveSong();
@@ -307,7 +307,7 @@ function playSong() {
         })
         .catch(err => {
             /*show UI that play failed*/
-            console.log(err);
+            console.warn('Play was blocked or failed:', err);
         })
 }
 
