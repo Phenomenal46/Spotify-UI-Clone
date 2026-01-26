@@ -100,6 +100,24 @@ async function mockFetchAlbums() {
 
 
 // --- 3. FETCH FROM ASSETS (production-like) ---
+/*
+  manifest.json purpose:
+
+  - A small JSON index file that contains an array of album folder names, e.g.:
+      ["Ambient", "Calm", "Coding-vibe", "Energy", "Focus", "Motivation"]
+
+  - Why we use it:
+    1. Browsers cannot list directory contents, so we need a known list of album folders.
+    2. Fetching one manifest is cheaper and simpler than trying to discover folders dynamically.
+    3. After reading the manifest, the app fetches each folder's info.json (assets/albums/<folder>/info.json)
+       to get album metadata (title, cover, songs, etc).
+
+  - Notes:
+    - When adding/removing an album folder, update manifest.json to include/exclude that folder.
+    - For local dev, run a simple HTTP server (e.g. `npx http-server` or `python -m http.server`) because
+      fetch() to local files is blocked on some browsers when opening via file://.
+*/
+
 async function fetchAlbumsFromAssets() {
     try {
         const manifestResp = await fetch('assets/albums/manifest.json');
