@@ -149,7 +149,6 @@ const audioPlayer = new Audio();
 const mainContainer = document.getElementById('main-cards-container');
 // These are expected in the DOM; provide sensible fallbacks so the script doesn't break during early errors/tests
 const viewTitle = document.getElementById('view-title') || { innerText: '' };
-const viewDesc = document.getElementById('view-desc') || { style: {}, innerText: '' };
 const btnBack = document.getElementById('btn-back');
 const btnForward = document.getElementById('btn-forward'); // new forward control
 
@@ -211,7 +210,7 @@ async function loadAlbums() {
                             <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: black; margin-left: 2px;"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <h4>${albumData.meta.title}</h4>
-                        <p>${albumData.meta.artist}</p>
+                        <p style="font-size: 13px;">${albumData.meta.artist}</p>
                     `;
             mainContainer.appendChild(card);
         });
@@ -228,7 +227,6 @@ function renderPlaylistView(albumData) {
     btnBack.style.cursor = "pointer";
     btnBack.style.opacity = "1";
     viewTitle.innerText = '';
-    viewDesc.style.display = 'none';
     mainContainer.innerHTML = '';
     mainContainer.className = '';
     // Put the container into playlist-mode so it won't show its scrollbar
