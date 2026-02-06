@@ -45,7 +45,6 @@ nav.nav-root {
     margin: 0px 8px 0px 4px;
     position: relative;
     box-sizing: border-box;
-    /* for mobile overlays */
 }
 
 /* Left and right containers inside nav */
@@ -59,8 +58,7 @@ nav.nav-root {
     align-items: center
 }
 
-/* ===== Hamburger placed exactly where logo is; stacked vertical bars ===== */
-/* base - hidden on desktop */
+/* Hamburger - hidden on desktop */
 .hamburger-btn {
     display: none;
     /* will be shown at <=900px */
@@ -70,11 +68,9 @@ nav.nav-root {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* keep exact logo-area sizing — match typical nav icon size */
+    /* keep exact logo-area sizing */
     width: 40px;
-    /* adjust if your logo image is a different fixed size */
     height: 40px;
-    /* center the three bars */
     cursor: pointer;
     border-radius: 50%;
 }
@@ -90,8 +86,6 @@ nav.nav-root {
     /* prevent stretching */
     border-radius: 2px;
     background: #fff;
-    /* visible on dark nav; change if needed */
-    transform: none !important;
 }
 
 /* Logo */

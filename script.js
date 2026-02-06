@@ -439,14 +439,14 @@ if (volumeBar) {
 updateNavButtons();
 updateMuteUI();
 
-// --- timeupdate listener (moved back) ---
+// --- timeupdate listener  ---
 audioPlayer.addEventListener('timeupdate', () => {
     const current = audioPlayer.currentTime;
     const duration = audioPlayer.duration;
     if (isNaN(duration)) return;
     seekBar.value = (current / duration) * 100;
     currentTimeSpan.innerText = formatTime(current);
-    totalDurationSpan.innerText = formatTime(duration);
+    
 });
 
 audioPlayer.addEventListener('loadedmetadata', () => {
