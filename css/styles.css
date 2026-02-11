@@ -194,6 +194,12 @@ nav.nav-root {
     font-weight: 400
 }
 
+/* navbar links */
+.nav-link {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 2px;
+}
 
 .nav-link:hover {
     color: white;
@@ -256,13 +262,6 @@ nav.nav-root {
     font: 0.875rem;
 }
 
-/* navbar links */
-.nav-link {
-    color: var(--muted);
-    text-decoration: none;
-    padding: 6px 2px;
-}
-
 /* Auth buttons */
 .btn {
     border:none;
@@ -306,8 +305,6 @@ main {
     height: 78vh;
 }
 
-
-/* New sidebar (app-sidebar) styles matching Spotify layout */
 .app-sidebar {
     margin: 0px 0px 6px 6px;
     width: 20vw;
