@@ -179,7 +179,6 @@ nav.nav-root {
     cursor: pointer;
 }
 
-
 .search-input {
     background: transparent;
     border: 0;
@@ -214,8 +213,6 @@ nav.nav-root {
     transform: translateY(-1px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25)
 }
-
-
 
 .browse-btn {
     border-style: none;
@@ -462,7 +459,6 @@ main {
     opacity: 0.9
 }
 
-
 .main-container {
     width: calc(100% - 17vw - 40px);
     height: auto;
@@ -542,7 +538,6 @@ main {
     transform: translateY(0);
 }
 
-
 /* disabled look */
 .nav-arrow-btn[disabled] {
     opacity: 0.45;
@@ -550,7 +545,6 @@ main {
     box-shadow: none;
     transform: none;
 }
-
 
 /* --- Cards grid (albums) --- */
 .cards-container {
@@ -726,7 +720,6 @@ main {
     color: var(--text-gray);
 }
 
-
 /* --- 5. PLAYER BAR --- */
 .player-bar {
     height: 90px;
@@ -860,7 +853,6 @@ input[type="range"]::-webkit-slider-thumb {
     outline: none;
 }
 
-
 #volume-bar {
     width: 100px;
     height: 4px;
@@ -874,15 +866,13 @@ input[type="range"]::-webkit-slider-thumb {
     height: 16px;
     fill: currentColor;
 }
-
 /* -----------------------------
    Responsive breakpoints
    - <= 600px: small phones
    - <= 900px: tablets / small desktops
    - > 900px: desktop (default)
    ----------------------------- */
-
-/* Make the layout stack on narrow screens and hide the sidebar behind hamburger for clarity */
+/* Make the layout stack on narrow screens and hide the sidebar behind hamburger */
 @media (max-width: 900px) {
     .hamburger-btn {
         /* visible on small screens */
@@ -969,7 +959,6 @@ input[type="range"]::-webkit-slider-thumb {
         text-wrap: wrap;
         padding: 7px 8px;
     }
-
 }
 
 /* Small phones: single column cards and compact player */
@@ -1059,7 +1048,6 @@ input[type="range"]::-webkit-slider-thumb {
     body {
         font-size: 12px;
     }
-
 }
 
 /* Medium screens: make cards a bit more dense */
